@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <script type="module" crossorigin src="/assets/index-bhlm9EgE.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-T74ItOsL.css">
+  </head>
+
+  <body>
+
+    <div id="content">
+      <div style="margin-top: 15px;margin-left: 15px;position: absolute;right: 20px;z-index: 10;">
+        <div class="layui-inline">
+          <button type="button" class="layui-btn layui-btn-normal" id="listBtn" style="display: none">清单</button>
+        </div>
+
+        <div class="layui-inline">
+          <button type="button" class="layui-btn layui-btn-normal" id="save">打印</button>
+        </div>
+        <p></p>
+        <p><button class="layui-btn layui-btn-normal layui-btn-radius" id="change">　　</button></p>
+      </div>
+      <div>
+        <div style="position: relative;">
+          <!--style="height: 3300px;overflow: hidden;"-->
+          <div style="position: absolute; left: 25px; top:0px; z-index: -1;">
+            <img alt="公司logo" height="85px" width="170px" id="logoImage" style=""
+              src="https://trade-erp.oss-cn-beijing.aliyuncs.com/2020_11_02/CXdpWCdk_67528_system_ERP%E5%B0%BA%E5%AF%B8.png">
+          </div>
+          <p class="fw" style="text-align:center;font-size: 36px">购销合同</p>
+          <div style="width: 100%;display:flex;margin-top: 50px;font-size: 20px">
+            <div style="flex: 1;">
+              <p class="fw" style="text-align:left;line-height: 1;">供方名称：<span id="unitName">福州速易联电气有限公司</span></p>
+              <p class="fw" style="text-align:left;line-height: 1;" align="left">签约地点：<span id="signingPlace"
+                  class="signingPlace">福州</span></p>
+              <p class="" style="text-align:left;line-height: 1;display: none">签约地点：<span class="customerId"></span></p>
+            </div>
+            <div style="flex: 1;">
+              <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+              <p class="fw" style="text-align:left;line-height: 1;">需方名称：<span id="demandSideName">哈尔滨宇龙自动化 有限公司</span>
+              </p>
+              <p class="fw" style="text-align:left;line-height: 1;">合同编号：<span id="voucherCode">XSDD-231204-1001</span>
+              </p>
+            </div>
+          </div>
+
+          <p id="typeTitle" style="margin-top: 0;margin-bottom: 0;">一、产品名称、商标、型号、制造商、数量、金额、供货时间及数量</p>
+          <!-- 
+  供需双方依据《中华人民共和国合同法》、《中华人民共和国产品质量法》、《食品卫生法》及其他有关法律、法规的规定,在平等、自愿、协商一致的基础上,就原辅材料的购销事官,签订本合同如下,以资共同遵守:<br/>
+  购销商品如下: -->
+          <!-- <p class="fs28 fw"  style="font-size: 24px;margin-bottom: 0;"></p> -->
+          <div id="listing">
+            <table style="font-size: 18px">
+              <colgroup>
+                <col class="num" style="width: 50px;">
+                <col class="proBrand" style="min-width: 85px;">
+                <col class="orderNumb" style="min-width: 145px;">
+                <col class="proIdex" style="min-width: 138px;">
+                <col class="proName" style="min-width: 180px;">
+                <col class="orderNum" style="min-width: 80px;">
+                <col class="proUnit" style="min-width: 50px;">
+                <col class="orderPrice" style="min-width: 85px;">
+                <col class="orderCalje" style="min-width: 85px;">
+                <col class="orderHq" style="min-width: 85px;">
+                <col class="baBz" style="min-width: 85px;">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="num">序号</th>
+                  <th class="proBrand">品牌</th>
+                  <th class="orderNumb">订货号</th>
+                  <th class="proIdex">规格型号</th>
+                  <th class="proName">描述</th>
+                  <th class="orderNum">数量</th>
+                  <th class="proUnit">单位</th>
+                  <th class="orderPrice">单价</th>
+                  <th class="orderCalje">金额</th>
+                  <th class="orderHq">货期/天</th>
+                  <th class="baBz">备注</th>
+                </tr>
+              </thead>
+              <tbody class="table-tbody" id="listData">
+                <tr>
+                  <td class="num">1</td>
+                  <td class="proBrand">速易联</td>
+                  <td class="orderNumb">03330006204</td>
+                  <td class="proIdex">CEF-1.5</td>
+                  <td class="proName">E型针、镀银母针、1.5mm2</td>
+                  <td class="orderNum">448</td>
+                  <td class="proUnit">个</td>
+                  <td class="orderPrice">1.2</td>
+                  <td class="orderCalje">537.6</td>
+                  <td class="orderHq">2023/12/05</td>
+                  <td class="baBz"></td>
+                </tr>
+
+                <tr>
+                  <td class="num">2</td>
+                  <td class="proBrand">速易联</td>
+                  <td class="orderNumb">03330006104</td>
+                  <td class="proIdex">CEM-1.5</td>
+                  <td class="proName">E型针、镀银公针、1.5mm2</td>
+                  <td class="orderNum">448</td>
+                  <td class="proUnit">个</td>
+                  <td class="orderPrice">1.2</td>
+                  <td class="orderCalje">537.6</td>
+                  <td class="orderHq">2023/12/05</td>
+                  <td class="baBz"></td>
+                </tr>
+
+                <tr>
+                  <td class="num">3</td>
+                  <td class="proBrand">速易联</td>
+                  <td class="orderNumb">0230244550000</td>
+                  <td class="proIdex">H24B-AG</td>
+                  <td class="proName">24B,双扣，开孔安装底座</td>
+                  <td class="orderNum">7</td>
+                  <td class="proUnit">个</td>
+                  <td class="orderPrice">26</td>
+                  <td class="orderCalje">182</td>
+                  <td class="orderHq">2023/12/05</td>
+                  <td class="baBz"></td>
+                </tr>
+
+                <tr>
+                  <td class="num">4</td>
+                  <td class="proBrand">速易联</td>
+                  <td class="orderNumb">0230243220132</td>
+                  <td class="proIdex">H24B-TS-M32</td>
+                  <td class="proName">24B,4耳，侧出上壳，M32螺纹</td>
+                  <td class="orderNum">7</td>
+                  <td class="proUnit">个</td>
+                  <td class="orderPrice">28</td>
+                  <td class="orderCalje">196</td>
+                  <td class="orderHq">2023/12/05</td>
+                  <td class="baBz"></td>
+                </tr>
+
+                <tr>
+                  <td class="num">5</td>
+                  <td class="proBrand">速易联</td>
+                  <td class="orderNumb">01320643101</td>
+                  <td class="proIdex">HEEE-064-F</td>
+                  <td class="proName">HEEE-064母插，冷压</td>
+                  <td class="orderNum">7</td>
+                  <td class="proUnit">个</td>
+                  <td class="orderPrice">32.8</td>
+                  <td class="orderCalje">229.6</td>
+                  <td class="orderHq">2023/12/05</td>
+                  <td class="baBz"></td>
+                </tr>
+
+                <tr>
+                  <td class="num">6</td>
+                  <td class="proBrand">速易联</td>
+                  <td class="orderNumb">01320643001</td>
+                  <td class="proIdex">HEEE-064-M</td>
+                  <td class="proName">HEEE-064公插，冷压</td>
+                  <td class="orderNum">7</td>
+                  <td class="proUnit">个</td>
+                  <td class="orderPrice">32.8</td>
+                  <td class="orderCalje">229.6</td>
+                  <td class="orderHq">2023/12/05</td>
+                  <td class="baBz"></td>
+                </tr>
+
+                <tr>
+                  <td class="num">7</td>
+                  <td class="proBrand">速易联</td>
+                  <td class="orderNumb">060232102</td>
+                  <td class="proIdex">SUEL-32-P</td>
+                  <td class="proName">M32、尼龙电缆接头、锁紧范围：18-25mm</td>
+                  <td class="orderNum">7</td>
+                  <td class="proUnit">件</td>
+                  <td class="orderPrice">5.8</td>
+                  <td class="orderCalje">40.6</td>
+                  <td class="orderHq">2023/12/05</td>
+                  <td class="baBz"></td>
+                </tr>
+              </tbody>
+              <tfoot id="listFoot">
+                <tr>
+                  <td colspan="1" style="text-align: center;font-weight: bold"><span>备注:</span>
+                  </td>
+                  <td class="totalBaDjbz" colspan="10" align="left">
+                    <span class="baDjbz">哈尔滨市平房区开发区天池路7号,褚立微,18249462031</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="8" class="totalAmountColSpan" style="text-align: right"><span>(以上(<span
+                        id="fpslName">含税13%</span>))</span><span>合计:</span></td>
+                  <td colspan="3" style="text-align: center"><span id="totalJe">1953</span></td>
+                </tr>
+                <tr>
+                  <td colspan="8" class="chineseAmountColSpan" style="text-align: right">合计人民币金额(大写):</td>
+                  <td colspan="3" style="text-align: center"><span id="chineseAmount">壹仟玖佰伍拾叁元整</span></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <!-- ============================================================================= -->
+          <div class="print" style="margin-top: 20px;word-break:break-word;" id="print">
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">二、价格：本合同涉及单价均为含税13%</div>
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">三、质量要求：国标及相关行业标准，若需方提供图纸的应符合图纸及相关技术要求。
+            </div>
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">四、付款方式：月结30天</div>
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">五、运输方式：由供货方发货至需方指定地点并承担货物在途中的风险和费用。</div>
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">六、交（提）货地点：哈尔滨市平房区开发区天池路7号 </div>
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">七、违约责任：双方友好协商。协商不成时，按《民法典》有关条款执行。</div>
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">
+              八、接收方式：货到后一周内请确认货物的数量与出货清单是否相同，若超过一周时间需方未能确认则默认为无误差。</div>
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">九、本购销合同需方盖章回传后方生效。</div>
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">十、其他事项：本合同一式两份，供需双方各执一份。</div>
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">十一、合同争议处理方式：双方协商不成，依法向供方当地人民法院提起诉讼。</div>
+            <div style="font-size:20px;text-indent:0em;word-break:break-word;">本合同其他未尽事宜，双方签订补充协议，补充协议与本合同具有同等效力。</div>
+          </div>
+
+          <div id="listing" style="position: relative;">
+            <table style="font-size: 20px">
+              <colgroup>
+                <col style="width: 100px;">
+                <col style="width: 400px;">
+                <col style="width: 100px;">
+                <col style="width: 400px;">
+              </colgroup>
+              <thead style="font-size: 20px">
+                <tr>
+                  <th class="fw" colspan="2">供方</th>
+                  <th class="fw" colspan="2">需方</th>
+                </tr>
+              </thead>
+              <tbody class="table-tbody" style="font-size: 20px">
+                <tr>
+                  <td>单位名称</td>
+                  <td id="unitName2">福州速易联电气有限公司</td>
+                  <td>单位名称</td>
+                  <td id="demandSideName2">哈尔滨宇龙自动化 有限公司</td>
+                </tr>
+                <tr>
+                  <td>开户银行</td>
+                  <td id="unitBank">中国建设银行股份有限公司福州东南汽车城支行</td>
+                  <td>开户银行</td>
+                  <td id="demandSideBank">农行松花江支行宣发分理处</td>
+                </tr>
+                <tr>
+                  <td>账号</td>
+                  <td id="unitAccount">35050161663800001149</td>
+                  <td>账号</td>
+                  <td id="demandSideAccount">08061601040001332</td>
+                </tr>
+                <tr>
+                  <td>税号</td>
+                  <td id="unitTax">91350121MA3443YK64 </td>
+                  <td>税号</td>
+                  <td id="demandSideTax">91230103749549847H</td>
+                </tr>
+                <tr>
+                  <td>地址</td>
+                  <td id="unitAddress2">福建省福州市闽侯县青口镇青囗投资区白水路37号</td>
+                  <td>地址</td>
+                  <td id="demandSideAddress">哈尔滨市平房区开发区天池路7号 </td>
+                </tr>
+                <tr>
+                  <td>电话</td>
+                  <td id="unitPhone">13328662904</td>
+                  <td>电话</td>
+                  <td id="demandSidePhone">18249462031</td>
+                </tr>
+                <tr>
+                  <td>传真</td>
+                  <td id="unitFax"></td>
+                  <td>传真</td>
+                  <td id="demandSideFax"></td>
+                </tr>
+                <tr>
+                  <td>代表人</td>
+                  <td id="unitRepresentative">陈秀惠</td>
+                  <td>代表人</td>
+                  <td id="demandSideRepresentative">&nbsp;&nbsp;&nbsp;隋景波转褚立微</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="position: absolute; left:350px; top:50px;">
+              <img alt="tupian" width="240" height="240" id="sealImage" style=""
+                src="https://trade-erp.oss-cn-beijing.aliyuncs.com/2023_07_18/QB3ATRjZ_556421_system_%E9%80%9F%E6%98%93%E8%81%94%E5%90%88%E5%90%8C%E7%AB%A0.png">
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+      </div>
+
+    </div>
+    <div id="root"></div>
+
+  </body>
+
+</html>
